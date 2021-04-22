@@ -22,7 +22,8 @@ class ShareBBApi {
     const params = (method === "get")
         ? data
         : {};
-
+        
+    console.log("data", data)
     try {
       return (await axios({ url, method, data, params, headers })).data;
     } catch (err) {
@@ -38,7 +39,7 @@ class ShareBBApi {
 
   static async getListings() {
     let res = await this.request(`listings/`);
-    return res.companies;
+    return res.listings;
   }
 
   /** Get list of all jobs. */

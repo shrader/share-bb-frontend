@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
-import Loading from "./Loading";
-import Api from "./api";
+import Loading from "../Loading";
+import Api from "../api";
 import ListingCard from "./ListingCard";
 
 function Listings() {
@@ -21,6 +21,8 @@ function Listings() {
     let listingsList = await Api.getListings();
     setListings(listingsList);
   }
+
+  console.log("listings", listings)
 
   if (listings === null) {
     return (<Loading/>);

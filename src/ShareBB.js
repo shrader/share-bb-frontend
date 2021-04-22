@@ -1,12 +1,12 @@
 import {useEffect} from "react";
 import Api from "./api";
-import Listings from "./Listings";
+import Homepage from "./Homepage";
 
 function ShareBB() {
 
 
   return(
-    <Listings />
+    <Homepage />
   )
 }
 
