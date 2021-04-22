@@ -1,13 +1,13 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import Homepage from "../homepage/Homepage";
+import Homepage from "../Homepage";
 import Listings from "../listings/Listings";
-import ListingsCard from "../listings/ListingsCard";
+import ListingsCard from "../listings/ListingCard";
 import Bookings from "../bookings/Bookings";
 import LoginForm from "../auth/LoginForm";
-import ProfileForm from "../profiles/ProfileForm";
+import ProfileForm from "../users/ProfileForm";
 import SignupForm from "../auth/SignupForm";
-import PrivateRoute from "./PrivateRoute";
+//import PrivateRoute from "./PrivateRoute";
 
 /** Site-wide routes.
  *
@@ -44,17 +44,17 @@ function Routes() {
             <Listings />
           </Route>
 
-          <PrivateRoute exact path="/bookings">
+          <Route exact path="/bookings">
             <Bookings />
-          </PrivateRoute>
+          </Route>
 
-          <PrivateRoute exact path="/listings/:title">
+          <Route exact path="/listings/:title">
             <ListingsCard />
-          </PrivateRoute>
+          </Route>
 
-          <PrivateRoute path="/profile">
+          <Route path="/profile">
             <ProfileForm />
-          </PrivateRoute>
+          </Route>
 
           <Redirect to="/" />
         </Switch>

@@ -5,8 +5,7 @@ import Homepage from "./Homepage";
 function ShareBB() {
 
 
-  return(
-    <Homepage />
+  return(null
   )
 }
 

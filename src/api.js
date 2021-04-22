@@ -35,12 +35,26 @@ class ShareBBApi {
 
   // Individual API routes
 
-  /** Get list of all companies. */
+  /** Get list of all listings. */
 
   static async getListings() {
     let res = await this.request(`listings/`);
     return res.listings;
   }
+
+  /** Get a single listing. */
+
+  static async getListing(id) {
+    let res = await this.request(`listings/${id}`);
+    return res.listing;
+  }
+
+    /** Get list of all bookings. */
+
+    static async getBookings() {
+      let res = await this.request(`bookings/`);
+      return res.bookings;
+    }
 
   /** Get list of all jobs. */
 
