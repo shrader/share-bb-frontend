@@ -48,7 +48,7 @@ function Routes() {
             <Bookings />
           </Route>
 
-          <Route exact path="/listings/:title">
+          <Route exact path="/listings/:id">
             <ListingsCard />
           </Route>
 

@@ -1,34 +1,32 @@
 import Api from "../api";
-import ListingCard from "../listings/ListingCard";
+import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
-function BookingCard({startDate, endDate, listingId}) {
-  //let History = useHistory()
+function BookingCard({ startDate, endDate, listingId }) {
+  let listData;
+  useEffect(function loadListData() {
 
-  // function routeToCompany() {
-  //   History.push(`/companies/${handle}`)
-  // }
+    async function getListData() {
+      listData = await Api.getListing(listingId);
+      console.log("listData", listData);
+      return listData;
+    }
+    getListData()
+  },[])
 
-  async function getListData() {
-    let listData = await Api.getListing(listingId);
-    console.log("listData",listData);
-    return listData;
-  }
-
-  let listData = getListData();
+  // let listData = getListData();
 
   console.log("listData", listData);
 
-
-
   return (
-    <div style={{boxShadow: "0px 1px 5px black", padding: "15px", margin: "15px"}} onClick={null}>
+    <div style={{ boxShadow: "0px 1px 5px black", padding: "15px", margin: "15px" }} onClick={null}>
       <div>
         Start Date: {startDate}
       </div>
       <div>
         End Date: {endDate}
       </div>
-      <ListingCard  price={listData.price} capacity={listData.capacity} title={listData.title} description={listData.description}/>
+      <Link listData={listData} to={`/listings/${listingId}`}>Listing Details</Link>
     </div>
   )
 }

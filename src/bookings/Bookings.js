@@ -33,7 +33,7 @@ function Bookings() {
     <div>
       {
         bookings.map(b => (
-       <BookingCard key={b.id} listingId={b.listing_id} startDate={b.start_date} endDate={b.end_date} />
+       <BookingCard key={b.id} listingId={b.listing_id} startDate={b.startdate} endDate={b.enddate} />
         ))
       }
     </div>
