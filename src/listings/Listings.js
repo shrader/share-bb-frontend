@@ -28,11 +28,13 @@ function Listings() {
     return (<Loading/>);
   }
 
+  let style = {boxShadow: "0px 1px 5px black", padding: "15px", margin: "15px"};
+
   return(
     <div>
       {
         listings.map(l => (
-        <ListingCard key={l.id} price={l.price} capacity={l.capacity} title={l.title} description={l.description}/>
+        <ListingCard key={l.id} price={l.price} capacity={l.capacity} title={l.title} description={l.description} style={style}/>
         ))
       }
     </div>

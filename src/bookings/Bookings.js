@@ -7,11 +7,16 @@ function Bookings() {
 
   //const History = useHistory();
   const [bookings, setBookings] = useState(null);
+  const [listData, setListData] = useState(null);
   //const user = useContext(UserContext);
   
   useEffect(function makeList() {
-    bookingsList()
+    bookingsList();
   }, [])
+
+  useEffect(function getListingData() {
+    getListData()
+  }, [bookings])
 
   // if (!user.loggedIn) {
   //   History.push("/");
@@ -22,9 +27,20 @@ function Bookings() {
     setBookings(bookingsList);
   }
 
+  async function getListData() {
+    let listings = await Api.getListings();
+    console.log("listDataArr", listings);
+    setListData(listings);
+  }
+
+  function filterList(id){
+    let matchingListing = listData.filter(listing => listing.id === id);
+    return matchingListing[0];
+  }
+
   console.log("bookings", bookings);
 
-  if (bookings === null) {
+  if (bookings === null || listData === null) {
     return (<Loading/>);
   }
 
@@ -33,7 +49,7 @@ function Bookings() {
     <div>
       {
         bookings.map(b => (
-       <BookingCard key={b.id} listingId={b.listing_id} startDate={b.startdate} endDate={b.enddate} />
+       <BookingCard key={b.id} listing={filterList(b.listingid)} startDate={b.startdate} endDate={b.enddate} />
         ))
       }
     </div>

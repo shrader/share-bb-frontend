@@ -1,22 +1,15 @@
 import Api from "../api";
-import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { Link, Route } from "react-router-dom";
+import ListingCard from "../listings/ListingCard";
 
-function BookingCard({ startDate, endDate, listingId }) {
-  let listData;
-  useEffect(function loadListData() {
 
-    async function getListData() {
-      listData = await Api.getListing(listingId);
-      console.log("listData", listData);
-      return listData;
-    }
-    getListData()
-  },[])
+function BookingCard({ startDate, endDate, listing }) {
+
 
   // let listData = getListData();
 
-  console.log("listData", listData);
+  console.log("listData2", listing);
+  const {title, description, price, capacity} = listing;
 
   return (
     <div style={{ boxShadow: "0px 1px 5px black", padding: "15px", margin: "15px" }} onClick={null}>
@@ -26,7 +19,7 @@ function BookingCard({ startDate, endDate, listingId }) {
       <div>
         End Date: {endDate}
       </div>
-      <Link listData={listData} to={`/listings/${listingId}`}>Listing Details</Link>
+      <ListingCard style={null} title={title} price={price} description={description} capacity={capacity} />
     </div>
   )
 }

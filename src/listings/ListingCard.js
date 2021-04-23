@@ -1,6 +1,6 @@
 //import { useHistory } from "react-router-dom"
 
-function ListingCard({title, description, price, capacity}) {
+function ListingCard({title, description, price, capacity, style}) {
   //let History = useHistory()
 
   // function routeToCompany() {
@@ -8,7 +8,7 @@ function ListingCard({title, description, price, capacity}) {
   // }
 
   return (
-    <div style={{boxShadow: "0px 1px 5px black", padding: "15px", margin: "15px"}} onClick={null}>
+    <div style={style} onClick={null}>
       <div>
         title: {title}
       </div>
