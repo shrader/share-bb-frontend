@@ -7,6 +7,7 @@ import Bookings from "../bookings/Bookings";
 import LoginForm from "../auth/LoginForm";
 import ProfileForm from "../users/ProfileForm";
 import SignupForm from "../auth/SignupForm";
+import ShareBBApi from "../api";
 //import PrivateRoute from "./PrivateRoute";
 
 /** Site-wide routes.

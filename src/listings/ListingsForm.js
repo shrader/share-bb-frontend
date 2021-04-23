@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import ShareBBApi from "../api"; 
+import ShareBBApi from ".api./"
 // import Alert from "../common/Alert";
 
 /** Signup form.
@@ -14,20 +14,20 @@ import ShareBBApi from "../api";
  * Routed as /signup
  */
 
-function SignupForm() {
+function ListingsForm({postListing}) {
   const history = useHistory();
   const [formData, setFormData] = useState({
-    username: "",
-    password: "",
-    firstName: "",
-    lastName: "",
-    email: "",
+    title: "",
+    description: "",
+    location: "",
+    price: "",
+    capacity: "",
   });
   const [formErrors, setFormErrors] = useState([]);
 
   console.debug(
-      "SignupForm",
-      "signup=", ShareBBApi.signup,
+      "ListingsForm",
+      "postListing=", postListing,
       "formData=", formData,
       "formErrors=", formErrors,
   );
@@ -39,7 +39,7 @@ function SignupForm() {
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-    let result = await ShareBBApi.signup(formData);
+    let result = await postListing(formData);
     if (result.success) {
       history.push("/");
     } else {
@@ -56,55 +56,53 @@ function SignupForm() {
   return (
       <div className="SignupForm">
         <div className="container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
-          <h2 className="mb-3">Sign Up</h2>
+          <h2 className="mb-3">New Listing</h2>
           <div className="card">
             <div className="card-body">
               <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                  <label>Username</label>
+                  <label>Title</label>
                   <input
-                      name="username"
+                      name="title"
                       className="form-control"
-                      value={formData.username}
+                      value={formData.title}
                       onChange={handleChange}
                   />
                 </div>
                 <div className="form-group">
-                  <label>Password</label>
+                  <label>Description</label>
                   <input
-                      type="password"
-                      name="password"
+                      name="description"
                       className="form-control"
-                      value={formData.password}
+                      value={formData.description}
                       onChange={handleChange}
                   />
                 </div>
 
                 <div className="form-group">
-                  <label>First name</label>
+                  <label>Location</label>
                   <input
-                      name="firstName"
+                      name="location"
                       className="form-control"
-                      value={formData.firstName}
+                      value={formData.location}
                       onChange={handleChange}
                   />
                 </div>
                 <div className="form-group">
-                  <label>Last name</label>
+                  <label>Price</label>
                   <input
-                      name="lastName"
+                      name="price"
                       className="form-control"
-                      value={formData.lastName}
+                      value={formData.price}
                       onChange={handleChange}
                   />
                 </div>
                 <div className="form-group">
-                  <label>Email</label>
+                  <label>Capacity</label>
                   <input
-                      type="email"
-                      name="email"
+                      name="capacitu"
                       className="form-control"
-                      value={formData.email}
+                      value={formData.capacity}
                       onChange={handleChange}
                   />
                 </div>
@@ -129,4 +127,4 @@ function SignupForm() {
   );
 }
 
-export default SignupForm;
+export default ListingsForm;

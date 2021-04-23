@@ -47,6 +47,7 @@ function Bookings() {
 
   return(
     <div>
+      <h2>Bookings</h2>
       {
         bookings.map(b => (
        <BookingCard key={b.id} listing={filterList(b.listingid)} startDate={b.startdate} endDate={b.enddate} />

@@ -14,10 +14,10 @@ function BookingCard({ startDate, endDate, listing }) {
   return (
     <div style={{ boxShadow: "0px 1px 5px black", padding: "15px", margin: "15px" }} onClick={null}>
       <div>
-        Start Date: {startDate}
+        Start Date: {startDate.split('T')[0]}
       </div>
       <div>
-        End Date: {endDate}
+        End Date: {endDate.split('T')[0]}
       </div>
       <ListingCard style={null} title={title} price={price} description={description} capacity={capacity} />
     </div>

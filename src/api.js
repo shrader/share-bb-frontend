@@ -20,9 +20,9 @@ class ShareBBApi {
     const url = `${BASE_URL}/${endpoint}`;
     const headers = { Authorization: `Bearer ${ShareBBApi.token}` };
     const params = (method === "get")
-        ? data
-        : {};
-        
+      ? data
+      : {};
+
     console.log("data", data)
     try {
       return (await axios({ url, method, data, params, headers })).data;
@@ -49,12 +49,12 @@ class ShareBBApi {
     return res.listing;
   }
 
-    /** Get list of all bookings. */
+  /** Get list of all bookings. */
 
-    static async getBookings() {
-      let res = await this.request(`bookings/`);
-      return res.bookings;
-    }
+  static async getBookings() {
+    let res = await this.request(`bookings/`);
+    return res.bookings;
+  }
 
   /** Get list of all jobs. */
 
@@ -70,10 +70,19 @@ class ShareBBApi {
   // }
   // /** Sign a user up. */
 
-  // static async signup(formData) {
-  //   let res = await this.request(`auth/register`, formData, "post");
-  //   this.token = res.token;
-  //   return res.token;
+  static async signup(formData) {
+    formData.userType="renter"
+    // console.log("this", this)
+    let res = await this.request(`users/`, formData, "post");
+    this.token = res.token;
+    return res.token;
+  }
+
+  // create a new listing
+
+  // static async postListing(formData) {
+  //   let res = await this.request(`listings/`, formData, "post");
+
   // }
 
   // /** Log in a user. */

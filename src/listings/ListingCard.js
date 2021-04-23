@@ -10,7 +10,7 @@ function ListingCard({title, description, price, capacity, style}) {
   return (
     <div style={style} onClick={null}>
       <div>
-        title: {title}
+        <h3>title: {title}</h3>
       </div>
       <div>
         description: {description}
