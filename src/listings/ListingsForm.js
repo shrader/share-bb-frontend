@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import ShareBBApi from ".api./"
+import ShareBBApi from "../api";
 // import Alert from "../common/Alert";
 
 /** Signup form.
@@ -39,12 +39,11 @@ function ListingsForm({postListing}) {
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-    let result = await postListing(formData);
-    if (result.success) {
-      history.push("/");
-    } else {
-      setFormErrors(result.errors);
-    }
+    let result = await ShareBBApi.postListing(formData);
+    // if (result.errors) {
+    //   setFormErrors(result.errors);
+    // } 
+    console.log("result", result);
   }
 
   /** Update form data field */
@@ -100,7 +99,7 @@ function ListingsForm({postListing}) {
                 <div className="form-group">
                   <label>Capacity</label>
                   <input
-                      name="capacitu"
+                      name="capacity"
                       className="form-control"
                       value={formData.capacity}
                       onChange={handleChange}

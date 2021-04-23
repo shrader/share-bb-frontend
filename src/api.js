@@ -80,10 +80,11 @@ class ShareBBApi {
 
   // create a new listing
 
-  // static async postListing(formData) {
-  //   let res = await this.request(`listings/`, formData, "post");
-
-  // }
+  static async postListing(formData) {
+    formData.ownerId=1
+    let res = await this.request(`listings/`, formData, "post");
+    return res.data;
+  }
 
   // /** Log in a user. */
 

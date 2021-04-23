@@ -39,6 +39,11 @@ function Navbar() {
               Sign up 
             </Link>
           </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/create-listing">
+              Add listing 
+            </Link>
+          </li>
           {/* <li className="nav-item">
             <Link className="nav-link" to="/" onClick={logout}>
               Log out {currentUser.first_name || currentUser.username}

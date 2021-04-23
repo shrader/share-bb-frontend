@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import Homepage from "../Homepage";
 import Listings from "../listings/Listings";
 import ListingsCard from "../listings/ListingCard";
+import ListingsForm from "../listings/ListingsForm";
 import Bookings from "../bookings/Bookings";
 import LoginForm from "../auth/LoginForm";
 import ProfileForm from "../users/ProfileForm";
@@ -47,6 +48,10 @@ function Routes() {
 
           <Route exact path="/bookings">
             <Bookings />
+          </Route>
+
+          <Route exact path="/create-listing">
+            <ListingsForm />
           </Route>
 
           <Route exact path="/listings/:id">
